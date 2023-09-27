@@ -15,8 +15,11 @@ Metrics/ModuleLength:
 Style/Documentation:
   Enabled: false
 AllCops:
+  TargetRubyVersion: 3.0.6
+  DisabledByDefault: true
   Exclude:
-    - 'db/**'
+    - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'vendor/**/*'
     - 'bin/*'
