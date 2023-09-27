@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Posts API", type: :request do
+RSpec.describe 'Posts API', type: :request do
   let!(:posts) { create_list(:post, 10) }
   let(:post_id) { posts.first.id }
 
@@ -45,7 +47,9 @@ RSpec.describe "Posts API", type: :request do
   end
 
   describe 'POST /posts' do
-    let(:valid_attributes) { { post: { title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' } } }
+    let(:valid_attributes) do
+      { post: { title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' } }
+    end
 
     context 'when the request is valid' do
       before { post '/posts', params: valid_attributes }

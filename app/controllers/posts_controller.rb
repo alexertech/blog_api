@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show update destroy]
 
@@ -41,9 +43,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by(id: params[:id])
-    unless @post
-      render json: { error: "Post not found" }, status: :not_found
-    end
+    return if @post
+
+    render json: { error: 'Post not found' }, status: :not_found
   end
 
   def post_params
