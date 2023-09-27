@@ -1,24 +1,82 @@
-# README
+# Ruby on Rails Blog API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+This is a simple Blog API developed using Ruby on Rails, implementing RESTful principles. It's designed to allow interaction with a PostgreSQL database to create, read, update, and delete blog posts. Each post contains a title, a body, and a read count with the average time a reader would take.
 
-Things you may want to cover:
+This is backend behaves the same as the [Java Spring Blog Api](https://github.com/alexertech/blog_api_spring), just wanted to create the same on a different technology stack.
 
-* Ruby version
+## Technologies Used
+- Ruby 3
+- Ruby on Rails 7
+- PostgreSQL
+- RSpec for Testing
 
-* System dependencies
+## Setup Instructions
 
-* Configuration
+### Prerequisites
+- Ruby 3
+- Ruby on Rails 7
+- PostgreSQL
 
-* Database creation
+### Steps
+1. Clone the repository to your local machine.
+   ```sh
+   git clone https://github.com/alexertech/blog_api.git
+   cd blog_api
+   ```
 
-* Database initialization
+2. Install the required gems.
+   ```sh
+   bundle install
+   ```
 
-* How to run the test suite
+3. Setup the database.
+   ```sh
+   rails db:create
+   rails db:migrate
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Run the server.
+   ```sh
+   rails server
+   ```
 
-* Deployment instructions
+5. The application will be available at `http://localhost:3000`.
 
-* ...
+### Running Tests
+To run the test suite, execute the following command in the project directory:
+   ```sh
+   rspec
+   ```
+
+## Interacting with the API using `curl`
+
+### Fetching All Posts
+```sh
+curl -X GET http://localhost:3000/posts
+```
+
+### Creating a New Post
+```sh
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Sample Post", "body": "This is a sample post."}' http://localhost:3000/posts
+```
+
+### Updating a Post
+```sh
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Updated Title", "body": "Updated Body"}' http://localhost:3000/posts/1
+```
+
+### Deleting a Post
+```sh
+curl -X DELETE http://localhost:3000/posts/1
+```
+
+### Fetching a Single Post
+```sh
+curl -X GET http://localhost:3000/posts/1
+```
+
+### Calculating the Read Time
+```sh
+curl -X GET http://localhost:3000/posts/1/read_time
+```
