@@ -8,11 +8,6 @@ class Post < ApplicationRecord
 
   WORDS_PER_MINUTE = 250 # average reading speed
 
-  def average_read_time
-    # returns average read time in minutes
-    views_count.zero? ? 0 : (read_time.to_f / views_count).round(2)
-  end
-
   private
 
   def set_defaults
