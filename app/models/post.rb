@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  before_create :set_defaults
+  before_save :set_defaults
 
   validates :title, presence: true
   validates :body, presence: true
